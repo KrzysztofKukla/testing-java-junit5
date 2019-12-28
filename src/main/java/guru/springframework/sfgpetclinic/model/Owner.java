@@ -1,6 +1,8 @@
 package guru.springframework.sfgpetclinic.model;
 
 
+import lombok.Builder;
+
 import java.util.HashSet;
 import java.util.Set;
 
