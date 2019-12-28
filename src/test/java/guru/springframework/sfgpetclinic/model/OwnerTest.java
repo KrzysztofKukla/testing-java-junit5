@@ -2,6 +2,7 @@ package guru.springframework.sfgpetclinic.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -18,6 +19,7 @@ class OwnerTest {
         owner2 = createOwner(2L, "Peter", "McFly", "Sunny 23", "Warsaw", "112233");
     }
 
+    @DisplayName("Grouped test with many asserts")
     //it allows to run all Assertions even if first is failing like below
     @Test
     void groupedAssertions() {
