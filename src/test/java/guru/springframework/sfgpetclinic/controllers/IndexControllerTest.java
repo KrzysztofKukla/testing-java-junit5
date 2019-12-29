@@ -97,4 +97,9 @@ class IndexControllerTest {
         Map<String, String> variables = System.getenv();
         variables.forEach((key, value) -> System.out.println(key + "-> " + value));
     }
+
+    @Test
+    void indexTestWithAssertJ() throws Exception {
+        org.assertj.core.api.Assertions.assertThat(indexController.index()).isNotBlank();
+    }
 }
