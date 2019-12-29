@@ -13,8 +13,6 @@ import org.junit.jupiter.api.TestInfo;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.RepeatedTest.CURRENT_REPETITION_PLACEHOLDER;
-import static org.junit.jupiter.api.RepeatedTest.DISPLAY_NAME_PLACEHOLDER;
 
 /**
  * @author Krzysztof Kukla
@@ -26,6 +24,7 @@ class PersonTest implements ModelTest {
 
     @BeforeEach
     void setUp() {
+        System.out.println("------------------");
         person = new Person(1L, "Joe", "Buck");
     }
 
@@ -37,19 +36,5 @@ class PersonTest implements ModelTest {
         );
     }
 
-    @DisplayName("My Repeated test of->")
-    @RepeatedTest(value = 10, name = DISPLAY_NAME_PLACEHOLDER + CURRENT_REPETITION_PLACEHOLDER)
-    void repeatedTest() throws Exception {
 
-    }
-
-    @RepeatedTest(5)
-    //TestInfo and RepetitionInfo will be inject
-    void repeatedTestWithDependencyInjection(TestInfo testInfo, RepetitionInfo repetitionInfo) throws Exception {
-        String displayName = testInfo.getDisplayName();
-        Set<String> tags = testInfo.getTags();
-        System.out.println(displayName+"-> ");
-        tags.forEach((t)-> System.out.println("tag-> "+t));
-        System.out.println("current-> "+repetitionInfo.getCurrentRepetition());
-    }
 }

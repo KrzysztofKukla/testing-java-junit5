@@ -8,14 +8,16 @@ import org.junit.jupiter.api.TestInfo;
 /**
  * @author Krzysztof Kukla
  */
-@Tag("model")
-public interface ModelTest {
+@Tag("modelRepeated")
+public interface ModelRepeatedTest {
 
     //RepetitionInfo is NOT available for non repeatedTest
     //so this interface can implement only class that contains only @RepeatedTest
     @BeforeEach
-    default void beforeEach(TestInfo testInfo){
+    default void beforeEach(TestInfo testInfo, RepetitionInfo repetitionInfo) {
         System.out.println("DisplayName test-> " + testInfo.getDisplayName());
+        System.out.println("Current repetition-> " + repetitionInfo.getCurrentRepetition());
 
     }
+
 }
