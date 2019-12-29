@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.controllers;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +41,17 @@ class IndexControllerTest {
         //test and method are executed in different threads, that means we don't wait to finish method execution
         //when duration time is exceeded ( przekroczony ) then it terminates ( przerywa ) our test - kill that thread earlier
         Assertions.assertTimeoutPreemptively(Duration.ofMillis(100), ()->Thread.sleep(5000));
+    }
+
+    @Test
+    void assumptionTest() throws Exception {
+        //Assumptions allow to invoke tests only if specified condition is achieved
+        //used especially to run tests for different environments
+        Assumptions.assumeTrue("GURU".equalsIgnoreCase(System.getenv("GURU_RUNTIME")));
+
+        //this assert test will be invoke only if Assumption above is achieved
+        //otherwise will be ignore/disable
+        Assertions.assertEquals("inadex",indexController.index());
     }
 
 }
