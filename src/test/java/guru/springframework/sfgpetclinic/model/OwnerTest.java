@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.ModelTest;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -11,8 +12,8 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Krzysztof Kukla
  */
-@Tag("model")
-class OwnerTest {
+//from JUnit 5 your tests can implement interfaces as well
+class OwnerTest implements ModelTest {
 
     private Owner owner1;
     private Owner owner2;

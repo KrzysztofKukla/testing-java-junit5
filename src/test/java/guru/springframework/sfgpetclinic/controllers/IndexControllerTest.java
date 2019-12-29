@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.controllers;
 
+import guru.springframework.sfgpetclinic.ControllerTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,8 @@ import java.util.Set;
 /**
  * @author Krzysztof Kukla
  */
-class IndexControllerTest {
+//from JUnit 5 your tests can implement interfaces as well
+class IndexControllerTest implements ControllerTest {
 
     private IndexController indexController;
 

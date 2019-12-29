@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.ModelTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -8,8 +9,8 @@ import org.junit.jupiter.api.Test;
 /**
  * @author Krzysztof Kukla
  */
-@Tag("model")
-class PersonTest {
+//from JUnit 5 your tests can implement interfaces as well
+class PersonTest implements ModelTest {
 
     private Person person;
 
