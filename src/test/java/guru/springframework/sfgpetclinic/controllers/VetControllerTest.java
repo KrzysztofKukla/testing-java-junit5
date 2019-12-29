@@ -5,6 +5,7 @@ import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.services.VetService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatcher;
@@ -23,6 +24,7 @@ import java.util.Set;
 /**
  * @author Krzysztof Kukla
  */
+@Tag("controller")
 @ExtendWith(MockitoExtension.class)
 class VetControllerTest {
 

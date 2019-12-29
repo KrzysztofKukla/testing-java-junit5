@@ -2,11 +2,13 @@ package guru.springframework.sfgpetclinic.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
  * @author Krzysztof Kukla
  */
+@Tag("model")
 class PersonTest {
 
     private Person person;
