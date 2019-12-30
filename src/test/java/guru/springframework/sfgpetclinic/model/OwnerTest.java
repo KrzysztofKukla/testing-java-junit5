@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * @author Krzysztof Kukla
@@ -43,6 +45,12 @@ class OwnerTest implements ModelTest {
     @Test
     void hamcrestTest() throws Exception {
         MatcherAssert.assertThat(owner1.getCity(), Matchers.is("Cracow"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"first", "second", "third"})
+    void parameterValueSourceTest(String value) throws Exception {
+        System.out.println(value);
     }
 
     private Owner createOwner(Long id, String firstName, String lastName, String address, String city, String telephone) {
