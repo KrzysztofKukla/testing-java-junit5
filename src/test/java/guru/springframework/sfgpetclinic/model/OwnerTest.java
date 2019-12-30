@@ -6,7 +6,6 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -47,7 +46,8 @@ class OwnerTest implements ModelTest {
         MatcherAssert.assertThat(owner1.getCity(), Matchers.is("Cracow"));
     }
 
-    @ParameterizedTest
+    @DisplayName("Value Source Test-> ")
+    @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
     @ValueSource(strings = {"first", "second", "third"})
     void parameterValueSourceTest(String value) throws Exception {
         System.out.println(value);
