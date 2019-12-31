@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.CustomArgsProvider;
 import guru.springframework.sfgpetclinic.ModelTest;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -89,6 +91,13 @@ class OwnerTest implements ModelTest {
     @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
     @MethodSource(value = {"getArgs"})
     void methodProviderTest(String stateName, int val1, int val2) throws Exception {
+        System.out.println(stateName + " " + val1 + " " + val2);
+    }
+
+    @DisplayName("Class arguments provider Test-> ")
+    @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
+    @ArgumentsSource(value = CustomArgsProvider.class)
+    void classArgumentsProviderTest(String stateName, int val1, int val2) throws Exception {
         System.out.println(stateName + " " + val1 + " " + val2);
     }
 
