@@ -8,10 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 /**
  * @author Krzysztof Kukla
@@ -81,12 +85,28 @@ class OwnerTest implements ModelTest {
         System.out.println(stateName + " " + val1 + " " + val2);
     }
 
+    @DisplayName("Method provider Test-> ")
+    @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
+    @MethodSource(value = {"getArgs"})
+    void methodProviderTest(String stateName, int val1, int val2) throws Exception {
+        System.out.println(stateName + " " + val1 + " " + val2);
+    }
+
     private Owner createOwner(Long id, String firstName, String lastName, String address, String city, String telephone) {
         Owner owner = new Owner(id, firstName, lastName);
         owner.setAddress(address);
         owner.setCity(city);
         owner.setTelephone(telephone);
         return owner;
+    }
+
+    //here we can provide arguments from many sources like database, message queue, xml file, json etc.
+    private static Stream<Arguments> getArgs() {
+        return Stream.of(
+            Arguments.of("AAA", 111, 222),
+            Arguments.of("BBB", 333, 666),
+            Arguments.of("CCC", 444, 777)
+        );
     }
 
 }
