@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -59,7 +60,17 @@ class OwnerTest implements ModelTest {
     @EnumSource(value = OwnerType.class)
     void enumSourceParameterizedTest(OwnerType ownerType) throws Exception {
         System.out.println(ownerType);
+    }
 
+    @DisplayName("CSV Source Test-> ")
+    @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
+    @CsvSource(value = {
+        "A,1,1",
+        "B,2,2",
+        "3,4,4"
+    })
+    void csvSourceTest(String stateName, int val1, int val2) {
+        System.out.println(stateName + " " + val1 + " " + val2);
     }
 
     private Owner createOwner(Long id, String firstName, String lastName, String address, String city, String telephone) {
