@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -70,6 +71,13 @@ class OwnerTest implements ModelTest {
         "3,4,4"
     })
     void csvSourceTest(String stateName, int val1, int val2) {
+        System.out.println(stateName + " " + val1 + " " + val2);
+    }
+
+    @DisplayName("CSV input File Test-> ")
+    @ParameterizedTest(name = ParameterizedTest.DISPLAY_NAME_PLACEHOLDER + ParameterizedTest.INDEX_PLACEHOLDER)
+    @CsvFileSource(resources = {"/input.csv"}, numLinesToSkip = 1)
+    void csvFileSource(String stateName, int val1, int val2) throws Exception {
         System.out.println(stateName + " " + val1 + " " + val2);
     }
 
