@@ -40,6 +40,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <junit-platform.version>5.5.2</junit-platform.version>
+        <maven-surefire_failsafe-plugin.version>2.22.2</maven-surefire_failsafe-plugin.version>
     </properties>
 
     <dependencies>
@@ -108,7 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven-surefire_failsafe-plugin.version}</version>
                 <configuration>
                     <!-- required for Java 11 -->
                     <argLine>
@@ -123,7 +124,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven-surefire_failsafe-plugin.version}</version>
                 <configuration>
                     <!-- required for Java 11 -->
                     <argLine>
@@ -139,7 +140,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- will be run in site goal
+            it will generate site for us -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.8.2</version>
+            </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire_failsafe-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
