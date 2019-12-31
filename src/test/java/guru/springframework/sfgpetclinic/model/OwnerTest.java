@@ -6,6 +6,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -37,6 +38,7 @@ class OwnerTest implements ModelTest {
     @DisplayName("Grouped test with many asserts")
     //it allows to run all Assertions even if first is failing like below
     @Test
+    @Disabled
     void groupedAssertions() {
         Assertions.assertAll("Person properties",
             () -> Assertions.assertAll("Owner1 properties",

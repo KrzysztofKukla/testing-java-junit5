@@ -110,20 +110,34 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!-- required for Java 11 -->
                     <argLine>
                         --illegal-access=permit
                     </argLine>
                 </configuration>
             </plugin>
+            <!-- failsafe plugin provides running integration tests, but we need to specify stage/goal where we
+            want to run it
+            by default it picks up tests named IT
+            integration tests will NOT pick up when there are any failed unit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!-- required for Java 11 -->
                     <argLine>
                         --illegal-access=permit
                     </argLine>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

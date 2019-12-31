@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledIf;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.EnabledOnOs;
@@ -15,7 +14,6 @@ import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author Krzysztof Kukla
@@ -36,6 +34,7 @@ class IndexControllerTest implements ControllerTest {
     }
 
     @Test
+    @Disabled
     void timeoutTest() throws Exception {
         //maximum duration time for this method is 100 milliseconds, but execution time method takes 5000 milliseconds
         //test and method are executed in the same thread, so wee need to wait until to the end of method execution
@@ -45,6 +44,7 @@ class IndexControllerTest implements ControllerTest {
     }
 
     @Test
+    @Disabled
     void timeoutPreemptivelyTest() throws Exception {
         //maximum duration time for this method is 100 milliseconds, but execution time method takes 5000 milliseconds
         //test and method are executed in different threads, that means we don't wait to finish method execution
@@ -104,4 +104,5 @@ class IndexControllerTest implements ControllerTest {
     void indexTestWithAssertJ() throws Exception {
         org.assertj.core.api.Assertions.assertThat(indexController.index()).isNotBlank();
     }
+
 }
