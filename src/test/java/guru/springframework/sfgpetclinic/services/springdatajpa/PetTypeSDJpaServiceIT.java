@@ -15,6 +15,7 @@ class PetTypeSDJpaServiceIT {
 
     @BeforeEach
     void setUp() {
+        System.out.println(System.getenv("API_KEY"));
     }
 
     @AfterEach
